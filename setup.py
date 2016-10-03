@@ -14,7 +14,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl.html.
 """
 from setuptools import setup, find_packages
-import os, sys
+import os
+import sys
 
 
 if sys.platform != "Windows":
@@ -29,7 +30,7 @@ else:
 
 setup(
     name="Flask-BS",
-    version="0.01a1",
+    version="0.02",
     author="Bill Schumacher",
     author_email="bill@servernet.co",
     description="Another flask extension that provides Bootstrap CSS, JS and HTML5 boilerplate.",
