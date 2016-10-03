@@ -14,14 +14,22 @@
 ** will be met: https://www.gnu.org/licenses/lgpl.html.
 """
 from setuptools import setup, find_packages
-import os
-requirements = open("{current_working_directory}requirements.txt".format(
-    current_working_directory=os.getcwd()), "r"
-).read().split("\n")
+import os, sys
+
+
+if sys.platform == "Windows":
+    requirements = open("{current_working_directory}/requirements.txt".format(
+        current_working_directory=os.getcwd()), "r"
+    ).read().split("\n")
+else:
+    requirements = open("{current_working_directory}\\requirements.txt".format(
+        current_working_directory=os.getcwd()), "r"
+    ).read().split("\n")
+
 
 setup(
     name="Flask-BS",
-    version="0.01a",
+    version="0.01a1",
     author="Bill Schumacher",
     author_email="bill@servernet.co",
     description="Another flask extension that provides Bootstrap CSS, JS and HTML5 boilerplate.",
