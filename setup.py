@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 import os, sys
 
 
-if sys.platform == "Windows":
+if sys.platform != "Windows":
     requirements = open("{current_working_directory}/requirements.txt".format(
         current_working_directory=os.getcwd()), "r"
     ).read().split("\n")
