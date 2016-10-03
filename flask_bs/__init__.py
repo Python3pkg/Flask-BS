@@ -16,16 +16,17 @@
 
     Some code copied from: (https://github.com/maxcountryman/flask-login) See LICENSE
 """
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, current_app
+from jinja2 import Template
 from werkzeug.local import LocalProxy
 from ._compat import PY2, text_type, iteritems
 
-_navigate = LocalProxy(lambda: current_app.extensions['bootstrap'])
+_bootstrap = LocalProxy(lambda: current_app.extensions['bootstrap'])
 
 _default_config = {
     'SUBDOMAIN': None,
     'URL_PREFIX': None,
-    'BLUEPRINT_NAME': 'bootstrap'
+    'BLUEPRINT_NAME': 'bootstrap',
 }
 
 
@@ -58,8 +59,27 @@ def create_blueprint(state, import_name):
 
 def render_content_with_bootstrap(title='Default', html_language='en', html_attributes='', body_attributes='',
                                   body='Hello world from Flask-BS!', head=''):
-    return render_template('base.html', title=title, html_language=html_language, html_attributes=html_attributes,
-                           body_attributes=body_attributes, body=body, head=head)
+    return Template(
+        """
+        <!DOCTYPE html>
+            <html lang="{{ html_language }}" {{ html_attributes }}>
+            <head>
+                <meta charset="UTF-8">
+                <title>{{ title }}</title>
+                {{ head }}
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                 crossorigin="anonymous">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                 crossorigin="anonymous"></script>
+            </head>
+
+            <body {{ body_attributes }}>
+                {{ body }}
+            </body>
+        </html>
+        """
+    ).render(title=title, html_language=html_language, html_attributes=html_attributes, body_attributes=body_attributes,
+             body=body, head=head)
 
 
 class Bootstrap(object):
