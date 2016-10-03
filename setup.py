@@ -21,7 +21,7 @@ requirements = open("{current_working_directory}requirements.txt".format(
 
 setup(
     name="Flask-BS",
-    version="0.01",
+    version="0.01a",
     author="Bill Schumacher",
     author_email="bill@servernet.co",
     description="Another flask extension that provides Bootstrap CSS, JS and HTML5 boilerplate.",
