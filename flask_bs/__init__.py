@@ -69,6 +69,8 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
                 {{ head }}
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                  crossorigin="anonymous">
+                <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"
+                 crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                  crossorigin="anonymous"></script>
             </head>
