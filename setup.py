@@ -20,7 +20,7 @@ requirements = ['Flask']
 
 setup(
     name="Flask-BS",
-    version="0.04",
+    version="0.5.0",
     author="Bill Schumacher",
     author_email="bill@servernet.co",
     description="Another flask extension that provides Bootstrap CSS, JS and HTML5 boilerplate.",

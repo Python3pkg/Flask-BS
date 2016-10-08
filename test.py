@@ -18,6 +18,7 @@ from flask_bs import Bootstrap, render_content_with_bootstrap
 
 
 app = Flask(__name__)
+app.config['BOOTSTRAP_EXCLUDE_JQUERY'] = False
 bs = Bootstrap(app)
 
 

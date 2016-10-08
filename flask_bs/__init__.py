@@ -69,8 +69,10 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
                 {{ head }}
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                  crossorigin="anonymous">
-                <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"
+                 {% if not exclude_jquery -%}
+                 <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"
                  crossorigin="anonymous"></script>
+                 {% endif -%}
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                  crossorigin="anonymous"></script>
             </head>
@@ -80,8 +82,8 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
             </body>
         </html>
         """
-    ).render(title=title, html_language=html_language, html_attributes=html_attributes, body_attributes=body_attributes,
-             body=body, head=head)
+    ).render(title=title, html_language=html_language, html_attributes=html_attributes,
+             body_attributes=body_attributes, body=body, head=head, exclude_jquery=_bootstrap.exclude_jquery)
 
 
 class Bootstrap(object):
@@ -129,5 +131,6 @@ class _BootstrapState(object):
         self.blueprint_name = 'bootstrap'
         self.url_prefix = None
         self.subdomain = None
+        self.exclude_jquery = False
         for key, value in iteritems(kwargs):
             setattr(self, key.lower(), value)
