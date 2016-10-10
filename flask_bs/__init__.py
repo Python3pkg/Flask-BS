@@ -14,7 +14,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl.html.
 
 
-    Some code copied from: (https://github.com/maxcountryman/flask-login) See LICENSE
+    Some code copied from:
+        https://github.com/maxcountryman/flask-login and https://github.com/mattupstate/flask-security  See LICENSE
 """
 from flask import Blueprint, current_app
 from jinja2 import Template
