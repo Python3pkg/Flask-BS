@@ -60,6 +60,11 @@ def create_blueprint(state, import_name):
 
 def render_content_with_bootstrap(title='Default', html_language='en', html_attributes='', body_attributes='',
                                   body='Hello world from Flask-BS!', head=''):
+    # Future, get a real CDN setup first.
+    #             {% if include_flexwidgets_css %}
+    #             <link rel="stylesheet" href="https://github.com/bschumacher/Flask-WTF-FlexWidgets/style.css"
+    #             crossorigin="anonymous">
+    #             {% endif %}
     return Template(
         """
         <!DOCTYPE html>
@@ -67,7 +72,6 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
             <head>
                 <meta charset="UTF-8">
                 <title>{{ title }}</title>
-                {{ head }}
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                  crossorigin="anonymous">
                  {% if not exclude_jquery -%}
@@ -76,6 +80,7 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
                  {% endif -%}
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                  crossorigin="anonymous"></script>
+                {{ head }}
             </head>
 
             <body {{ body_attributes }}>
@@ -84,7 +89,9 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
         </html>
         """
     ).render(title=title, html_language=html_language, html_attributes=html_attributes,
-             body_attributes=body_attributes, body=body, head=head, exclude_jquery=_bootstrap.exclude_jquery)
+             body_attributes=body_attributes, body=body, head=head,
+             exclude_jquery=_bootstrap.exclude_jquery)
+             # include_flexwidgets_css=_bootstrap.include_flexwidgets_css)
 
 
 class Bootstrap(object):
