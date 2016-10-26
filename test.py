@@ -14,8 +14,8 @@
 ** will be met: https://www.gnu.org/licenses/lgpl.html.
 """
 from flask import Flask
-from flask_bs import Bootstrap, render_content_with_bootstrap
 
+from flask_bs import Bootstrap, render_content_with_bootstrap
 
 app = Flask(__name__)
 app.config['BOOTSTRAP_EXCLUDE_JQUERY'] = False
@@ -25,6 +25,7 @@ bs = Bootstrap(app)
 @app.route("/")
 def hello():
     return render_content_with_bootstrap()
+
 
 if __name__ == "__main__":
     app.run()

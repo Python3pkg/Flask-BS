@@ -20,6 +20,7 @@
 from flask import Blueprint, current_app
 from jinja2 import Template
 from werkzeug.local import LocalProxy
+
 from ._compat import PY2, text_type, iteritems
 
 _bootstrap = LocalProxy(lambda: current_app.extensions['bootstrap'])
@@ -91,11 +92,10 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
     ).render(title=title, html_language=html_language, html_attributes=html_attributes,
              body_attributes=body_attributes, body=body, head=head,
              exclude_jquery=_bootstrap.exclude_jquery)
-             # include_flexwidgets_css=_bootstrap.include_flexwidgets_css)
+    # include_flexwidgets_css=_bootstrap.include_flexwidgets_css)
 
 
 class Bootstrap(object):
-
     def __init__(self, app=None, **kwargs):
         self.app = app
         self._engine = None
@@ -136,7 +136,6 @@ def _get_state(app, **kwargs):
 
 
 class _BootstrapState(object):
-
     def __init__(self, **kwargs):
         self.blueprint_name = 'bootstrap'
         self.url_prefix = None
@@ -144,3 +143,4 @@ class _BootstrapState(object):
         self.exclude_jquery = False
         for key, value in iteritems(kwargs):
             setattr(self, key.lower(), value)
+        self.render = render_content_with_bootstrap
