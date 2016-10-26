@@ -108,11 +108,13 @@ class Bootstrap(object):
             app.config.setdefault('BOOTSTRAP_{key}'.format(key=key), value)
 
         state = _get_state(app)
+        if app.extensions.get('bootstrap'):
+            state = app.extensions['bootstrap']
+        else:
+            if register_blueprint:
+                app.register_blueprint(create_blueprint(state, __name__))
 
-        if register_blueprint:
-            app.register_blueprint(create_blueprint(state, __name__))
-
-        app.extensions['bootstrap'] = state
+            app.extensions['bootstrap'] = state
 
         return state
 
