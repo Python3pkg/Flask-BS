@@ -76,7 +76,7 @@ def render_content_with_bootstrap(title='Default', html_language='en', html_attr
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                  crossorigin="anonymous">
                  {% if not exclude_jquery -%}
-                 <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"
+                 <script src="http://code.jquery.com/jquery-3.1.1.min.js"
                  crossorigin="anonymous" type="text/javascript"></script>
                  {% endif -%}
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
