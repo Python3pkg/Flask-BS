@@ -24,21 +24,9 @@ import sys
 PY2 = sys.version_info[0] == 2
 
 if not PY2:  # pragma: no cover
-    unicode = str  # needed for pyflakes in py3
+    str = str  # needed for pyflakes in py3
 
 if PY2:  # pragma: nocover
-
-    def iteritems(d):
-        return d.iteritems()
-
-
-    def itervalues(d):
-        return d.itervalues()
-
-
-    text_type = unicode
-
-else:  # pragma: nocover
 
     def iteritems(d):
         return iter(d.items())
@@ -46,6 +34,18 @@ else:  # pragma: nocover
 
     def itervalues(d):
         return iter(d.values())
+
+
+    text_type = str
+
+else:  # pragma: nocover
+
+    def iteritems(d):
+        return iter(list(d.items()))
+
+
+    def itervalues(d):
+        return iter(list(d.values()))
 
 
     text_type = str

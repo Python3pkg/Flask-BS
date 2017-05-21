@@ -37,7 +37,7 @@ def get_config(app):
     application without the annoying 'BOOTSTRAP_' prefix.
     :param app: The application to inspect
     """
-    items = app.config.items()
+    items = list(app.config.items())
     prefix = 'BOOTSTRAP_'
 
     def strip_prefix(tup):
